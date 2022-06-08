@@ -1,10 +1,14 @@
 import {
   storyblokEditable as sbEdit,
   storyblokInit as sbInit,
+  SbBlokData,
 } from "@storyblok/js";
+import { SbSvelteSDKOptions } from "./types";
+import { SvelteComponentTyped } from "svelte";
+
 export { useStoryblokBridge, apiPlugin } from "@storyblok/js";
 
-export const storyblokEditable = (node, value) => {
+export const storyblokEditable = (node: HTMLElement, value: SbBlokData) => {
   const updateDom = (value) => {
     const options = sbEdit(value);
     if (options["data-blok-c"]) {
@@ -37,13 +41,15 @@ export const useStoryblokApi = () => {
 export { useStoryblokApi as getStoryblokApi };
 
 let componentsMap = null;
-export const storyblokInit = (options) => {
+export const storyblokInit = (options: SbSvelteSDKOptions) => {
   const { storyblokApi } = sbInit(options);
   storyblokApiInstance = storyblokApi;
   componentsMap = options.components || {};
 };
 
-export const getComponent = (componentName) => {
+export const getComponent = (
+  componentName: string
+): SvelteComponentTyped<any> | undefined => {
   const component = componentsMap[componentName];
   if (!component) {
     console.error(`You didn't load the ${componentName} component. Please load it in storyblokInit. For example:
@@ -59,4 +65,6 @@ storyblokInit({
   return component;
 };
 
-export { default as StoryblokComponent } from "./StoryblokComponent.svelte";
+// export { default as StoryblokComponent } from "./StoryblokComponent.svelte";
+
+export * from "./types";

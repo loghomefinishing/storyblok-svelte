@@ -1,6 +1,8 @@
-<script>
+<script lang="ts">
+  import { SbBlokData } from "@storyblok/js";
   import { getComponent } from "./index";
-  export let blok;
+
+  export let blok: SbBlokData;
   let component;
 
   if (blok) {
@@ -10,4 +12,5 @@
   }
 </script>
 
+<!-- svelte-ignore missing-declaration -->
 <svelte:component this={component} {blok} {...$$restProps} />
