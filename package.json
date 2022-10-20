@@ -13,7 +13,7 @@
     "demo": "npm run demo --workspace=playground",
     "demo-sveltekit": "npm run dev --workspace=playground-sveltekit",
     "build": "npm run build --workspace=lib",
-    "build:ts": "vite build && tsc --prokect tsconfigjson",
+  
     "test:unit": "npm run test:unit --workspace=lib",
     "test:e2e": "npm run test:e2e --workspace=lib",
     "prepare": "husky install",
