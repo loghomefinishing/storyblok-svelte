@@ -5,7 +5,10 @@ import Teaser from "../components/Teaser.svelte";
 import { apiPlugin, storyblokInit } from "@storyblok/svelte";
 
 storyblokInit({
-  accessToken: "W1vLyxT5rQ15jBpANjnv0gtt",
+  accessToken: "QcaP2QpYTbrQzzOpxR7pmAtt",
+  apiOptions: {
+    region: "us", // Pass this key/value if your space was created under US region
+  },
   use: [apiPlugin],
   components: {
     feature: Feature,
